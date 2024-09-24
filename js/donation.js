@@ -1,5 +1,5 @@
 document.getElementById('noa-donate-btn').addEventListener('click', function() {
-    const noaAmountInput = document.getElementById('noa-input');
+    
     const noaAmount = parseAndValidate('noa-input'); 
 
     if (isNaN(noaAmount) || noaAmount <= 0) {
@@ -19,14 +19,19 @@ document.getElementById('noa-donate-btn').addEventListener('click', function() {
     const noaCurrentBalance = parseFloat(noaBalanceElement.textContent) + noaAmount;
     noaBalanceElement.textContent = noaCurrentBalance.toFixed(2); 
 
-    const p = document.createElement('p');
-    p.classList.add('text-lg');
-    p.innerText = `${noaAmount}TK Donate for Flood at Noakhali, Bangladesh\n${new Date().toLocaleDateString()}`;
-    document.getElementById('history-container').appendChild(p);
+    const historyItem = document.createElement('div');
+    historyItem.classList.add('history-entry'); 
+    historyItem.innerHTML = `
+        <p>Added: ${noaAmount}TK</p>
+        <p>Donate for Flood at Noakhali, Bangladesh</p>
+        <p>${new Date().toLocaleDateString()}</p>
+    `;
+    
+    document.getElementById('history-container').appendChild(historyItem);
 });
 
 document.getElementById('feni-don-btn').addEventListener('click', function() {
-    const feniAmountInput = document.getElementById('feni-input');
+   
     const feniAmount = parseAndValidate('feni-input');
 
     if (isNaN(feniAmount) || feniAmount <= 0) {
@@ -43,15 +48,20 @@ document.getElementById('feni-don-btn').addEventListener('click', function() {
     const feniBalanceElement = document.getElementById('feni-amount');
     const feniCurrentBalance = parseFloat(feniBalanceElement.textContent) + feniAmount;
     feniBalanceElement.textContent = feniCurrentBalance.toFixed(2); 
-    const p = document.createElement('p');
-    p.classList.add('text-lg');
-    p.innerText = `${feniAmount} TK donated for Flood Relief in Feni, Bangladesh\n${new Date().toLocaleDateString()}`;
-    document.getElementById('history-container').appendChild(p);
+    const historyItem = document.createElement('div');
+    historyItem.classList.add('history-entry'); 
+    historyItem.innerHTML = `
+        <p>Added: ${feniAmount}TK</p>
+        <p>Donate for Flood Relief in Feni, Bangladesh</p>
+        <p>${new Date().toLocaleDateString()}</p>
+    `;
+    
+    document.getElementById('history-container').appendChild(historyItem);
 
 });
 
 document.getElementById('quota-don-btn').addEventListener('click', function() {
-    const quotaAmountInput = document.getElementById('quota-input');
+    
     const quotaAmount = parseAndValidate('quota-input');
 
     if (isNaN(quotaAmount) || quotaAmount<= 0) {
@@ -71,11 +81,18 @@ document.getElementById('quota-don-btn').addEventListener('click', function() {
     const quotaCurrentBalance = parseFloat( quotaBalanceElement.textContent) + quotaAmount;
     quotaBalanceElement.textContent = quotaCurrentBalance.toFixed(2); 
 
-    const p = document.createElement('p');
-    p.classList.add('text-lg');
-    p.innerText = `${quotaAmount}TK Aid for Injured in the Quota Movement\n${new Date().toLocaleDateString()}`;
-    document.getElementById('history-container').appendChild(p);
+    const historyList = document.createElement('div');
+    historyList.classList.add('history-entry');
+    historyList.innerHTML = `
+        <p>Added: ${quotaAmount}TK</p>
+        <p>Aid for Injured in the Quota Movement</p>
+        <p>${new Date().toLocaleDateString()}</p>
+    `;
+    
+    document.getElementById('history-container').appendChild(historyList);
 });
+    
+
 
 
 
